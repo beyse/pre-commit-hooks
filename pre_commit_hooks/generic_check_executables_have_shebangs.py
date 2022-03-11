@@ -7,13 +7,14 @@ from typing import Sequence
 
 
 def check_has_shebang(path: str) -> int:
+    print('You are ine check_has_shebang')
     with open(path, 'rb') as file_handler:
         first_bytes = file_handler.read(2)
 
     if first_bytes != b'#!':
         quoted = shlex.quote(path)
         print(
-            '{}: marked executable but has no (or invalid) shebang!\n'.format(path),
+            '{}: [TEST] marked executable but has no (or invalid) shebang!\n'.format(path),
             "  If it isn't supposed to be executable, try: ",
             '`chmod -x {}`\n'.format(quoted),
             '  If it is supposed to be executable, double-check its shebang.',
@@ -24,6 +25,7 @@ def check_has_shebang(path: str) -> int:
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
+    print('Test 123')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('filenames', nargs='*')
     args = parser.parse_args(argv)
