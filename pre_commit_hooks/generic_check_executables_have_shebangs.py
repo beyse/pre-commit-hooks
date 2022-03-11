@@ -31,7 +31,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     retv = 0
 
     if sys.platform.startswith('win32'):
+        print('!!! You are on windows')
         return retv
+    else:
+        print('!!! You are on a different OS')
+        
     
     for filename in args.filenames:
         retv |= check_has_shebang(filename)
