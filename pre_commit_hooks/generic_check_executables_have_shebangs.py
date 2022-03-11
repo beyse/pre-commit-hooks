@@ -27,9 +27,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('filenames', nargs='*')
     args = parser.parse_args(argv)
-
+    
     retv = 0
 
+    if sys.platform.startswith('win32'):
+        return retv
+    
     for filename in args.filenames:
         retv |= check_has_shebang(filename)
 
